@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Commands Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Git Commands Cheat Sheet</h1>
+            <p class="subtitle">Everything you need to know about Git in one beautiful reference</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('basic-setup')">Basic Setup</button>
+            <button class="nav-tab" onclick="showSection('repositories')">Repositories</button>
+            <button class="nav-tab" onclick="showSection('making-changes')">Making Changes</button>
+            <button class="nav-tab" onclick="showSection('branching')">Branching & Merging</button>
+            <button class="nav-tab" onclick="showSection('history')">Inspecting History</button>
+            <button class="nav-tab" onclick="showSection('undoing')">Undoing Changes</button>
+            <button class="nav-tab" onclick="showSection('remote')">Remote Repos</button>
+            <button class="nav-tab" onclick="showSection('collaboration')">Collaboration</button>
+        </nav>
+
+        <main>
+            <!-- Basic Setup Section -->
+            <section id="basic-setup" class="content-section active">
+                <h2 class="section-title">🔧 Basic Setup & Configuration</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Config</span>
+                        <div class="command">git config --global user.name "Your Name"</div>
+                        <div class="description">Set your global username for all repositories</div>
+                        <div class="example">git config --global user.name "John Doe"</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Config</span>
+                        <div class="command">git config --global user.email "email@example.com"</div>
+                        <div class="description">Set your global email address for commits</div>
+                        <div class="example">git config --global user.email "john@example.com"</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Config</span>
+                        <div class="command">git config --global init.defaultBranch main</div>
+                        <div class="description">Set the default branch name to 'main'</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Config</span>
+                        <div class="command">git config --list</div>
+                        <div class="description">Show all Git configuration settings</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Config</span>
+                        <div class="command">git config --global core.editor "code --wait"</div>
+                        <div class="description">Set VS Code as the default Git editor</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Help</span>
+                        <div class="command">git help &lt;command&gt;</div>
+                        <div class="description">Get help for a specific Git command</div>
+                        <div class="example">git help commit</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Repositories Section -->
+            <section id="repositories" class="content-section">
+                <h2 class="section-title">📁 Creating & Managing Repositories</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Init</span>
+                        <div class="command">git init</div>
+                        <div class="description">Initialize a new Git repository in current directory</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Clone</span>
+                        <div class="command">git clone &lt;repository-url&gt;</div>
+                        <div class="description">Clone a remote repository to your local machine</div>
+                        <div class="example">git clone https://github.com/user/repo.git</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Clone</span>
+                        <div class="command">git clone &lt;url&gt; &lt;folder-name&gt;</div>
+                        <div class="description">Clone repository into a specific folder</div>
+                        <div class="example">git clone https://github.com/user/repo.git my-project</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Init</span>
+                        <div class="command">git init &lt;project-name&gt;</div>
+                        <div class="description">Initialize repository in a new directory</div>
+                        <div class="example">git init new-project</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Making Changes Section -->
+            <section id="making-changes" class="content-section">
+                <h2 class="section-title">📝 Making Changes & Commits</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Status</span>
+                        <div class="command">git status</div>
+                        <div class="description">Show the working directory status</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Add</span>
+                        <div class="command">git add &lt;file&gt;</div>
+                        <div class="description">Add specific file to staging area</div>
+                        <div class="example">git add index.html</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Add</span>
+                        <div class="command">git add .</div>
+                        <div class="description">Add all changes to staging area</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Add</span>
+                        <div class="command">git add *.js</div>
+                        <div class="description">Add all JavaScript files to staging</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Commit</span>
+                        <div class="command">git commit -m "commit message"</div>
+                        <div class="description">Commit staged changes with a message</div>
+                        <div class="example">git commit -m "Add user authentication"</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Commit</span>
+                        <div class="command">git commit -am "message"</div>
+                        <div class="description">Add and commit in one command (only for modified files)</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Commit</span>
+                        <div class="command">git commit --amend</div>
+                        <div class="description">Modify the most recent commit</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Branching & Merging Section -->
+            <section id="branching" class="content-section">
+                <h2 class="section-title">🌿 Branching & Merging</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Branch</span>
+                        <div class="command">git branch</div>
+                        <div class="description">List all local branches</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Branch</span>
+                        <div class="command">git branch &lt;branch-name&gt;</div>
+                        <div class="description">Create a new branch</div>
+                        <div class="example">git branch feature-auth</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Checkout</span>
+                        <div class="command">git checkout &lt;branch-name&gt;</div>
+                        <div class="description">Switch to another branch</div>
+                        <div class="example">git checkout main</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Checkout</span>
+                        <div class="command">git checkout -b &lt;branch-name&gt;</div>
+                        <div class="description">Create and switch to new branch</div>
+                        <div class="example">git checkout -b hotfix-bug</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Merge</span>
+                        <div class="command">git merge &lt;branch-name&gt;</div>
+                        <div class="description">Merge specified branch into current branch</div>
+                        <div class="example">git merge feature-auth</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Branch</span>
+                        <div class="command">git branch -d &lt;branch-name&gt;</div>
+                        <div class="description">Delete a branch (safe)</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Branch</span>
+                        <div class="command">git branch -D &lt;branch-name&gt;</div>
+                        <div class="description">Force delete a branch</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inspecting History Section -->
+            <section id="history" class="content-section">
+                <h2 class="section-title">🔍 Inspecting History</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Log</span>
+                        <div class="command">git log</div>
+                        <div class="description">Show commit history</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Log</span>
+                        <div class="command">git log --oneline</div>
+                        <div class="description">Compact commit history view</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Log</span>
+                        <div class="command">git log --graph --oneline</div>
+                        <div class="description">Visual history with branch graph</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Diff</span>
+                        <div class="command">git diff</div>
+                        <div class="description">Show unstaged changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Diff</span>
+                        <div class="command">git diff --staged</div>
+                        <div class="description">Show staged changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Show</span>
+                        <div class="command">git show &lt;commit-hash&gt;</div>
+                        <div class="description">Show specific commit details</div>
+                        <div class="example">git show abc123</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Undoing Changes Section -->
+            <section id="undoing" class="content-section">
+                <h2 class="section-title">↩️ Undoing Changes</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Restore</span>
+                        <div class="command">git restore &lt;file&gt;</div>
+                        <div class="description">Discard changes in working directory</div>
+                        <div class="example">git restore script.js</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Restore</span>
+                        <div class="command">git restore --staged &lt;file&gt;</div>
+                        <div class="description">Unstage a file</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Reset</span>
+                        <div class="command">git reset &lt;commit&gt;</div>
+                        <div class="description">Reset to specific commit (keep changes)</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Reset</span>
+                        <div class="command">git reset --hard &lt;commit&gt;</div>
+                        <div class="description">Reset and discard all changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Revert</span>
+                        <div class="command">git revert &lt;commit&gt;</div>
+                        <div class="description">Create new commit that undoes changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Clean</span>
+                        <div class="command">git clean -fd</div>
+                        <div class="description">Remove untracked files and directories</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Remote Repositories Section -->
+            <section id="remote" class="content-section">
+                <h2 class="section-title">🌐 Remote Repositories</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Remote</span>
+                        <div class="command">git remote -v</div>
+                        <div class="description">List remote repositories</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Remote</span>
+                        <div class="command">git remote add &lt;name&gt; &lt;url&gt;</div>
+                        <div class="description">Add a new remote repository</div>
+                        <div class="example">git remote add origin https://github.com/user/repo.git</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Push</span>
+                        <div class="command">git push &lt;remote&gt; &lt;branch&gt;</div>
+                        <div class="description">Push commits to remote repository</div>
+                        <div class="example">git push origin main</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Pull</span>
+                        <div class="command">git pull &lt;remote&gt; &lt;branch&gt;</div>
+                        <div class="description">Fetch and merge from remote</div>
+                        <div class="example">git pull origin main</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Fetch</span>
+                        <div class="command">git fetch &lt;remote&gt;</div>
+                        <div class="description">Download objects from remote</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Clone</span>
+                        <div class="command">git clone --branch &lt;branch&gt; &lt;url&gt;</div>
+                        <div class="description">Clone specific branch</div>
+                        <div class="example">git clone --branch develop https://github.com/user/repo.git</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collaboration Section -->
+            <section id="collaboration" class="content-section">
+                <h2 class="section-title">👥 Collaboration</h2>
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <span class="category-badge">Fetch</span>
+                        <div class="command">git fetch --all</div>
+                        <div class="description">Fetch all remotes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Pull</span>
+                        <div class="command">git pull --rebase</div>
+                        <div class="description">Pull with rebase instead of merge</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Push</span>
+                        <div class="command">git push -u &lt;remote&gt; &lt;branch&gt;</div>
+                        <div class="description">Push and set upstream branch</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Stash</span>
+                        <div class="command">git stash</div>
+                        <div class="description">Temporarily save changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Stash</span>
+                        <div class="command">git stash pop</div>
+                        <div class="description">Restore stashed changes</div>
+                    </div>
+
+                    <div class="command-card">
+                        <span class="category-badge">Branch</span>
+                        <div class="command">git branch -r</div>
+                        <div class="description">List remote branches</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="quick-tips">
+                <h3>💡 Pro Tips</h3>
+                <div class="tips-grid">
+                    <div class="tip">Use descriptive commit messages that explain WHY the change was made</div>
+                    <div class="tip">Commit often - small, focused commits are easier to understand and revert</div>
+                    <div class="tip">Use branches for new features and bug fixes to keep main stable</div>
+                    <div class="tip">Always pull before you push to avoid merge conflicts</div>
+                    <div class="tip">Use <span class="keyboard-shortcut">git status</span> frequently to know where you are</div>
+                    <div class="tip">Write good commit messages: present tense, capitalized, no period</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <h3>Git Commands Cheat Sheet</h3>
+                <p>Keep this handy reference for your daily Git workflow! Perfect for students and professionals alike.</p>
+                <p style="margin-top: 1rem; opacity: 0.8;">Made with ❤️ for developers</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section and activate tab
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
